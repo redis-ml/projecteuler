@@ -62,7 +62,7 @@ func main(){
       continue
     }
     cnt ++
-    fmt.Printf("data %d found %d cnt %d\n", *data, i, cnt)
+    //fmt.Printf("data %d found %d cnt %d\n", *data, i, cnt)
     if cnt == *data {
       fmt.Printf("data %d result %d cnt %d\n", *data, i,cnt)
       return
