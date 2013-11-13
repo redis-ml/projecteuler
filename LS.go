@@ -2,6 +2,7 @@ package main
 
 import (
   _ "fmt"
+  "math"
 )
 
 const block = uint64(1)<<25
@@ -64,7 +65,9 @@ func (ls *LS) Mark(n uint64) {
       ls.in = newbuf
     }
 
-    for i := uint64(3); i < ls.cap; i+=2 {
+    ls.Set(uint64(1))
+    max := uint64(math.Sqrt(float64(n)))
+    for i := uint64(3); i <= max; i+=2 {
       if ls.Get(i) {
         continue
       }
@@ -75,7 +78,7 @@ func (ls *LS) Mark(n uint64) {
           j = ls.cap - delta
           continue
         }
-        ls.Set(i)
+        ls.Set(j)
       }
     }
     ls.cap = n
